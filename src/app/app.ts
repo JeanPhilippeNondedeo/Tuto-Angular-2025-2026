@@ -1,22 +1,23 @@
-import {Component, EventEmitter, OnInit, signal} from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {Component} from '@angular/core';
 import {Exemple} from "./exemple/exemple";
 
 @Component({
-  selector: 'app-root',
-    imports: [RouterOutlet, Exemple],
-  templateUrl: './app.html',
-  styleUrl: './app.scss'
+    selector: 'app-root',
+    templateUrl: './app.html',
+    imports: [
+        Exemple
+    ],
+    styleUrl: './app.scss'
 })
-export class App implements OnInit {
-    public exemple: string = '';
-    public exempleOutput: string = '';
+export class App {
+    public colorRed: string = "red";
+    public textOutput: string = "";
 
-    ngOnInit(): void {
-      this.exemple = 'exempleInput';
+    public changeColor(){
+        this.colorRed = "blue";
     }
 
-    public receiveMessage(msg: string): void {
-      this.exempleOutput = msg;
+    public exempleOutput(exempleText: string) {
+        this.textOutput = exempleText;
     }
 }

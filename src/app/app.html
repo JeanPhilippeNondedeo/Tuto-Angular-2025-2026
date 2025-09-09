@@ -1,2 +1,4 @@
-<app-exemple (exempleOutput)="receiveMessage($event)" [exempleInput]="exemple"></app-exemple>
-<p>{{exempleOutput}}</p>
+<app-exemple (text)="exempleOutput($event)" [color]="colorRed"></app-exemple>
+<p>TOTO</p>
+{{ textOutput }}
+<button (click)="changeColor()">Change Color</button>
