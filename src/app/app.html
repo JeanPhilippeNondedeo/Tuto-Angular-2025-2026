@@ -32,6 +32,8 @@
   <label for="age">Age: </label>
   <input id="age" type="number" formControlName="age">
 
+  <button type="submit">SEND FORM</button>
+
   <pre>{{ profileForm.value | json }}</pre>
   <button (click)="changeForm()">Changer les valeurs du formulaire dynamiquement</button>
 </form>
@@ -48,5 +50,8 @@
   </div>
   <button type="submit" [disabled]="!userForm.valid">Envoyer</button>
 </form>
+
+
+<p>{{donnerRecu}}</p>
 
 

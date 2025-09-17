@@ -3,7 +3,8 @@ import {Exemple} from "./exemple/exemple";
 import {RouterLink, RouterOutlet} from "@angular/router";
 import {CurrencyPipe, JsonPipe, LowerCasePipe, UpperCasePipe} from "@angular/common";
 import {ExponentialStrenghPipe} from "./exponential-strengh-pipe";
-import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
+import {TutoService} from "./tuto-service";
 
 @Component({
     selector: 'app-root',
@@ -31,11 +32,16 @@ export class App {
         {id:2, name: 'tata'},
         {id:3, name: 'titi'}
     ];
+    public donnerRecu: string = '';
+
+    constructor(private tutoService: TutoService) {
+        this.donnerRecu = tutoService.donneDuService;
+    }
 
 
     //REACTIVE FORM
     public profileForm = new FormGroup({
-        email: new FormControl(''),
+        email: new FormControl('', Validators.email),
         age: new FormControl(''),
     });
     //TEMPLATE DRIVEN FORM
