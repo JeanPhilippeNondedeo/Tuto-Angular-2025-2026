@@ -1,4 +1,52 @@
 <app-exemple (text)="exempleOutput($event)" [color]="colorRed"></app-exemple>
 <p>TOTO</p>
-{{ textOutput }}
+@if (conditionIf) {
+  {{ textOutput }}
+}
+
+@for (listFor of listFors; track listFor) {
+  {{ listFor.name }}
+}
 <button (click)="changeColor()">Change Color</button>
+<button (click)="changeBoolean()">Change Boolean</button>
+<button routerLink="navigation">Vers la Page Navigation</button>
+<button routerLink="accueil">Vers la Page Accueil</button>
+
+<router-outlet></router-outlet>
+
+
+<p>EXEMPLE PIPE</p>
+
+
+<p> Je suis le texte en majuscule {{ textOutput | uppercase }} </p>
+<p> Je suis le texte en minuscule {{ textOutput | lowercase }} </p>
+<p> Je suis le prix en € {{ 20 | currency:'EUR' }}</p>
+<p> J'utilise mon pipe perso:  {{ 2 | exponentialStrengh:10 }}</p>
+
+
+<p>EXEMPLE FORMULAIRE REACTIVE FORM </p>
+<form [formGroup]="profileForm">
+  <label for="email">Email: </label>
+  <input id="email" type="email" formControlName="email">
+
+  <label for="age">Age: </label>
+  <input id="age" type="number" formControlName="age">
+
+  <pre>{{ profileForm.value | json }}</pre>
+  <button (click)="changeForm()">Changer les valeurs du formulaire dynamiquement</button>
+</form>
+<p>EXEMPLE FORMULAIRE TEMPLATE DRIVEN </p>
+<form (ngSubmit)="onSubmit()" #userForm="ngForm">
+  <div>
+    <label for="firstName">Prénom :</label>
+    <input type="text" id="firstName" name="firstName" [(ngModel)]="user.firstName" required/>
+  </div>
+
+  <div>
+    <label for="lastName">Nom :</label>
+    <input type="text" id="lastName" name="lastName" [(ngModel)]="user.lastName" required/>
+  </div>
+  <button type="submit" [disabled]="!userForm.valid">Envoyer</button>
+</form>
+
+
